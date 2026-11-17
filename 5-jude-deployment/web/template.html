@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DDR-Classify</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Layout: a lab-instrument console. Input column left, verdict + evidence right, model card below. */
+:root {
+  --bg: #f6f7f8; --panel: #ffffff; --ink: #14171a; --ink-2: #4d545c; --ink-3: #7b838c;
+  --line: #dfe3e7; --normal: #2a78d6; --tumour: #eb6834; --accent: #1f5fae;
+  --normal-soft: #e6f0fb; --tumour-soft: #fdeee7;
+  --display: "IBM Plex Serif", Georgia, serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111416; --panel: #1a1e21; --ink: #eef0f2; --ink-2: #b4bbc2; --ink-3: #868e96;
+    --line: #2c3237; --normal: #3987e5; --tumour: #e26a3a; --accent: #6aa5ec;
+    --normal-soft: #16263a; --tumour-soft: #3a2219; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111416; --panel: #1a1e21; --ink: #eef0f2; --ink-2: #b4bbc2; --ink-3: #868e96;
+  --line: #2c3237; --normal: #3987e5; --tumour: #e26a3a; --accent: #6aa5ec;
+  --normal-soft: #16263a; --tumour-soft: #3a2219; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--body); padding: 28px max(16px, 3vw) 48px; }
+.wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 20px; }
+header { display: grid; gap: 6px; }
+.kicker { font: 500 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+h1 { font: 500 clamp(24px, 3.2vw, 34px)/1.15 var(--display); letter-spacing: -0.02em; margin: 0; text-wrap: balance; max-width: 42ch; }
+.sub { color: var(--ink-2); max-width: 75ch; margin: 0; }
+.grid { display: grid; grid-template-columns: minmax(300px, 380px) 1fr; gap: 20px; align-items: start; }
+@media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 14px; }
+.panel h2 { font: 600 13px var(--body); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); margin: 0; }
+label.lab { font-size: 13px; color: var(--ink-2); display: block; margin-bottom: 6px; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 8px; padding: 3px; gap: 3px; background: var(--bg); }
+.seg button { border: 0; background: transparent; color: var(--ink-2); font: 500 13px var(--body); padding: 8px 6px; border-radius: 6px; cursor: pointer; transition: background .15s ease-out, transform .1s ease-out; }
+.seg button[aria-pressed="true"] { background: var(--panel); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 999px; padding: 5px 10px; font: 12px var(--mono); cursor: pointer; display: inline-flex; gap: 6px; align-items: center; transition: transform .1s ease-out, border-color .15s ease-out; }
+.chip:hover { border-color: var(--ink-3); }
+.chip[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.chip .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+button:active, .chip:active { transform: scale(0.97); }
+textarea { width: 100%; min-height: 120px; resize: vertical; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); font: 12px/1.45 var(--mono); padding: 10px; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.btn { border: 1px solid var(--accent); background: var(--accent); color: #fff; font: 600 13px var(--body); padding: 9px 14px; border-radius: 8px; cursor: pointer; transition: transform .1s ease-out, opacity .15s; }
+.btn.ghost { background: transparent; color: var(--accent); }
+.file { font-size: 12px; color: var(--ink-2); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.note { font-size: 12.5px; color: var(--ink-3); margin: 0; }
+.err { font-size: 13px; color: var(--tumour); margin: 0; min-height: 1em; }
+
+/* verdict */
+.verdict { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; }
+.pill { font: 600 13px var(--body); padding: 6px 12px; border-radius: 999px; letter-spacing: .02em; }
+.pill.T { background: var(--tumour-soft); color: var(--tumour); }
+.pill.N { background: var(--normal-soft); color: var(--normal); }
+.big { font: 500 44px/1 var(--display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.big small { font: 14px var(--body); color: var(--ink-3); letter-spacing: 0; margin-left: 6px; }
+.meter { position: relative; height: 14px; border-radius: 7px; background: linear-gradient(90deg, var(--normal) 0 50%, var(--tumour) 50% 100%); opacity: .9; }
+.meter .mark { position: absolute; top: -5px; width: 4px; height: 24px; border-radius: 2px; background: var(--ink); box-shadow: 0 0 0 2px var(--panel); transform: translateX(-2px); transition: left .3s cubic-bezier(.2,.8,.2,1); }
+.scale { display: flex; justify-content: space-between; font: 11px var(--mono); color: var(--ink-3); margin-top: 6px; }
+.meta { font: 12px var(--mono); color: var(--ink-3); }
+
+/* drivers */
+.drivers { display: grid; gap: 4px; }
+.drv { display: grid; grid-template-columns: 74px 1fr 1fr 54px; gap: 8px; align-items: center; font-size: 13px; }
+.drv .g { font: 500 12.5px var(--mono); }
+.drv .l, .drv .r { height: 14px; position: relative; }
+.drv .l span, .drv .r span { position: absolute; top: 0; height: 14px; border-radius: 3px; }
+.drv .l span { right: 0; background: var(--normal); border-radius: 3px 0 0 3px; }
+.drv .r span { left: 0; background: var(--tumour); border-radius: 0 3px 3px 0; }
+.drv .l { border-right: 1px solid var(--ink-3); }
+.drv .v { font: 12px var(--mono); color: var(--ink-2); text-align: right; font-variant-numeric: tabular-nums; }
+.drvhead { display: grid; grid-template-columns: 74px 1fr 1fr 54px; gap: 8px; font-size: 11.5px; color: var(--ink-3); }
+.drvhead span:nth-child(2) { text-align: right; }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: right; font-variant-numeric: tabular-nums; }
+th:first-child, td:first-child, th:nth-child(2), td:nth-child(2) { text-align: left; }
+th { font-weight: 500; color: var(--ink-3); font-size: 12px; }
+td.gene { font-family: var(--mono); }
+.tablewrap { overflow-x: auto; max-height: 340px; overflow-y: auto; }
+.tag { font-size: 11px; color: var(--ink-3); }
+
+.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+@media (max-width: 760px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+.stat { border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: var(--bg); }
+.stat b { display: block; font: 500 24px var(--display); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; color: var(--ink-2); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
+.caveat { border-left: 3px solid var(--tumour); padding: 2px 0 2px 12px; color: var(--ink-2); font-size: 14px; max-width: 75ch; }
+pre { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 12px; overflow-x: auto; font: 12px/1.5 var(--mono); margin: 0; }
+p { margin: 0; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Computing Bioinformatics · TCGA-BRCA · DNA damage repair</div>
+    <h1>Is this breast tissue sample tumour or normal, judged only by its DNA-repair genes?</h1>
+    <p class="sub">A logistic-regression classifier trained on <span id="ds"></span>. Load an example sample or paste your own RNA-seq values, and the model scores it in your browser.</p>
+  </header>
+
+  <div class="grid">
+    <section class="panel" aria-labelledby="in-h">
+      <h2 id="in-h">Input</h2>
+      <div>
+        <label class="lab" id="model-lab">Model</label>
+        <div class="seg" role="group" aria-labelledby="model-lab">
+          <button id="m-full" aria-pressed="true">158 DDR genes</button>
+          <button id="m-panel" aria-pressed="false">10-gene panel</button>
+        </div>
+      </div>
+      <div>
+        <label class="lab">Example TCGA samples <span class="tag">(seen in training, for demo)</span></label>
+        <div class="chips" id="chips"></div>
+      </div>
+      <div>
+        <label class="lab" for="paste">Or paste values: one <code>gene,value</code> per line, or a CSV with genes as columns</label>
+        <textarea id="paste" spellcheck="false" placeholder="RAD51,7.42&#10;EXO1,8.10&#10;UBE2T,8.95&#10;..."></textarea>
+      </div>
+      <div class="row">
+        <button class="btn" id="run">Score pasted values</button>
+        <label class="btn ghost" for="file">Upload CSV</label>
+        <input type="file" id="file" accept=".csv,.tsv,.txt" hidden>
+        <button class="btn ghost" id="copy">Copy example as CSV</button>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+      <p class="note">Units: log2(RSEM normalized count + 1), the TCGA RNA-seq v2 scale. Genes you leave out are set to the training average, which pulls the score toward neither class.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="out-h">
+      <h2 id="out-h">Result</h2>
+      <div class="verdict">
+        <span class="pill" id="pill">–</span>
+        <div class="big" id="prob">–<small>probability tumour</small></div>
+      </div>
+      <div>
+        <div class="meter"><div class="mark" id="mark" style="left:50%"></div></div>
+        <div class="scale"><span>0 · normal-like</span><span>0.5 threshold</span><span>tumour-like · 1</span></div>
+      </div>
+      <div class="meta" id="meta"></div>
+      <div>
+        <div class="drvhead"><span>Gene</span><span>pushes to normal</span><span>pushes to tumour</span><span style="text-align:right">log-odds</span></div>
+        <div class="drivers" id="drivers"></div>
+      </div>
+      <details>
+        <summary class="lab" style="cursor:pointer">All genes used by this model</summary>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Gene</th><th>Pathway</th><th>Sample</th><th>Normal mean</th><th>Tumour mean</th><th>Effect</th></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table></div>
+      </details>
+    </section>
+  </div>
+
+  <section class="panel" aria-labelledby="card-h">
+    <h2 id="card-h">Model card</h2>
+    <div class="cards" id="cards"></div>
+    <div class="two">
+      <div style="display:grid;gap:10px">
+        <p class="caveat"><b>Read this before trusting a score.</b> In cross-validation, 100 random sets of 158 genes separated tumour from normal just as well (AUC ≈ 0.999). DNA-repair genes carry a strong tumour signal, but much of it tracks cell proliferation, so it is not specific to repair.</p>
+        <p class="note"><a href="https://github.com/C-Sawe/ddr-breast-cancer" style="color:var(--accent)">Code, notebook and report on GitHub</a> · Team: Ibrahim Sudheysi, Alvin Kimani, Latifah Jaafar, Caleb Kipchirchir, Jude Makau.</p>
+        <p class="note">Validation: 5-fold cross-validation with each patient's tumour and normal kept in the same fold, repeated 3 times. Also checked on the 114 matched pairs and with whole hospitals held out. Most errors were PAM50 Normal-like tumours. Trained on one cohort and one platform: values from microarrays or other pipelines need re-normalising first. Research and teaching use only, not for diagnosis.</p>
+      </div>
+      <div style="display:grid;gap:8px">
+        <span class="lab" style="margin:0">Same model as a REST API (Flask, in <code>5-jude-deployment/api</code>)</span>
+        <pre>cd 5-jude-deployment
+docker build -t ddr-classify .
+docker run -p 8000:8000 ddr-classify
+
+curl -F model=panel -F file=@samples.csv \
+  localhost:8000/predict</pre>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+const M = /*MODEL_JSON*/null;
+let which = "full", current = null, currentId = null;
+const $ = id => document.getElementById(id);
+const fmt = (x, d = 3) => Number(x).toFixed(d);
+$("ds").textContent = M.dataset;
+
+function score(values, m) {
+  let logit = m.intercept, contrib = [], missing = 0;
+  m.genes.forEach((g, i) => {
+    let v = values[g];
+    let z = 0;
+    if (v === undefined || v === null || isNaN(v)) missing++;
+    else z = (v - m.mean[i]) / m.scale[i];
+    const c = z * m.coef[i];
+    contrib.push({ g, i, c, v });
+    logit += c;
+  });
+  return { p: 1 / (1 + Math.exp(-logit)), logit, contrib, missing };
+}
+
+function render() {
+  const m = M[which];
+  if (!current) return;
+  const r = score(current, m);
+  if (r.missing > 0.2 * m.genes.length) {
+    $("err").textContent = `Only ${m.genes.length - r.missing} of the ${m.genes.length} genes this model needs were found. Check gene symbols (HGNC, e.g. RAD51) and try again.`;
+    return;
+  }
+  const T = r.p >= 0.5;
+  $("pill").className = "pill " + (T ? "T" : "N");
+  $("pill").textContent = T ? "Tumour-like" : "Normal-like";
+  $("prob").innerHTML = (r.p > 0.999 ? "&gt;0.999" : r.p < 0.001 ? "&lt;0.001" : fmt(r.p, 3)) + "<small>probability tumour</small>";
+  $("mark").style.left = (r.p * 100) + "%";
+  const conf = Math.abs(r.p - 0.5) < 0.2 ? " · borderline, treat with caution" : "";
+  $("meta").textContent = `${currentId} · ${m.name} · log-odds ${fmt(r.logit, 2)}` +
+    (r.missing ? ` · ${r.missing} genes missing (set to average)` : "") + conf;
+  const top = [...r.contrib].sort((a, b) => Math.abs(b.c) - Math.abs(a.c)).slice(0, 8);
+  const mx = Math.max(...top.map(t => Math.abs(t.c)), 0.01);
+  $("drivers").innerHTML = top.map(t => {
+    const w = (Math.abs(t.c) / mx * 100).toFixed(1);
+    return `<div class="drv" title="${t.g}: value ${t.v ?? "missing"}, contribution ${fmt(t.c, 2)}">
+      <span class="g">${t.g}</span>
+      <span class="l">${t.c < 0 ? `<span style="width:${w}%"></span>` : ""}</span>
+      <span class="r">${t.c > 0 ? `<span style="width:${w}%"></span>` : ""}</span>
+      <span class="v">${t.c > 0 ? "+" : ""}${fmt(t.c, 2)}</span></div>`;
+  }).join("");
+  $("tbody").innerHTML = r.contrib.sort((a, b) => Math.abs(b.c) - Math.abs(a.c)).map(t =>
+    `<tr><td class="gene">${t.g}</td><td class="tag">${m.pathways[t.i]}</td><td>${t.v === undefined ? "–" : fmt(t.v, 2)}</td>
+     <td>${fmt(m.normal_mean[t.i], 2)}</td><td>${fmt(m.tumour_mean[t.i], 2)}</td>
+     <td style="color:${t.c > 0 ? "var(--tumour)" : "var(--normal)"}">${t.c > 0 ? "+" : ""}${fmt(t.c, 2)}</td></tr>`).join("");
+  const cv = m.cv;
+  $("cards").innerHTML = [
+    [fmt(cv.roc_auc, 3), "ROC-AUC (cross-validated)"],
+    [fmt(cv.balanced_acc, 3), "Balanced accuracy"],
+    [fmt(cv.sensitivity, 3), "Sensitivity (tumours caught)"],
+    [fmt(cv.specificity, 3), "Specificity (normals kept)"],
+  ].map(([b, s]) => `<div class="stat"><b>${b}</b><span>${s} · ${m.name}</span></div>`).join("");
+  $("err").textContent = "";
+}
+
+function setModel(w) {
+  which = w;
+  $("m-full").setAttribute("aria-pressed", w === "full");
+  $("m-panel").setAttribute("aria-pressed", w === "panel");
+  render();
+}
+$("m-full").onclick = () => setModel("full");
+$("m-panel").onclick = () => setModel("panel");
+
+$("chips").innerHTML = M.examples.map((e, i) =>
+  `<button class="chip" data-i="${i}" aria-pressed="false" title="True label: ${e.truth}">
+    <span class="dot" style="background:var(--${e.truth === "Tumour" ? "tumour" : "normal"})"></span>${e.id.slice(5)}</button>`).join("");
+document.querySelectorAll(".chip").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", "false"));
+  b.setAttribute("aria-pressed", "true");
+  const e = M.examples[+b.dataset.i];
+  current = e.values; currentId = `${e.id} (true: ${e.truth})`;
+  render();
+});
+
+function parse(text) {
+  const lines = text.trim().split(/\r?\n/).filter(Boolean);
+  if (!lines.length) throw new Error("Paste some values first.");
+  const sep = lines[0].includes("\t") ? "\t" : ",";
+  const rows = lines.map(l => l.split(sep).map(s => s.trim().replace(/^"|"$/g, "")));
+  const vals = {};
+  if (rows.every(r => r.length === 2) && isNaN(+rows[0][0])) {
+    rows.forEach(([g, v]) => { if (!isNaN(+v) && v !== "") vals[g.toUpperCase()] = +v; });
+  } else {
+    const head = rows[0], first = rows[1];
+    if (!first) throw new Error("A wide CSV needs a header row of genes and one row of values.");
+    head.forEach((g, i) => { if (first[i] !== undefined && first[i] !== "" && !isNaN(+first[i])) vals[g.toUpperCase()] = +first[i]; });
+  }
+  const nums = Object.values(vals);
+  if (!nums.length) throw new Error("No numeric values found. Use gene,value lines.");
+  if (Math.max(...nums) > 30) throw new Error("Values above 30 look like raw counts. Convert to log2(RSEM + 1) first.");
+  return vals;
+}
+$("run").onclick = () => {
+  try { current = parse($("paste").value); currentId = "Pasted sample";
+    document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", "false")); render(); }
+  catch (e) { $("err").textContent = e.message; }
+};
+$("file").onchange = async ev => {
+  const f = ev.target.files[0]; if (!f) return;
+  $("paste").value = await f.text(); $("run").click(); ev.target.value = "";
+};
+$("copy").onclick = async () => {
+  const e = M.examples.find((x, i) => document.querySelector(`.chip[data-i="${i}"]`).getAttribute("aria-pressed") === "true") || M.examples[0];
+  const txt = Object.entries(e.values).map(([g, v]) => `${g},${v}`).join("\n");
+  $("paste").value = txt;
+  try { await navigator.clipboard.writeText(txt); $("copy").textContent = "Copied"; }
+  catch { $("copy").textContent = "Placed in the box above"; }
+  setTimeout(() => $("copy").textContent = "Copy example as CSV", 1600);
+};
+document.querySelector('.chip[data-i="3"]').click();
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+,group,subtype,site,p_tumour
+TCGA-A1-A0SB-01,Tumour,BRCA_Normal,A1,0.111
+TCGA-A2-A0ES-01,Tumour,BRCA_LumA,A2,0.381
+TCGA-A2-A1G6-01,Tumour,BRCA_Normal,A2,0.02
+TCGA-AC-A2FK-01,Tumour,BRCA_Normal,AC,0.009
+TCGA-AO-A03U-01,Tumour,BRCA_Normal,AO,0.328
+TCGA-AO-A1KO-01,Tumour,BRCA_Normal,AO,0.002
+TCGA-AR-A2LN-01,Tumour,BRCA_LumA,AR,0.5
+TCGA-B6-A0RQ-01,Tumour,BRCA_Normal,B6,0.125
+TCGA-BH-A1FH-01,Tumour,BRCA_LumA,BH,0.38
+TCGA-BH-A28O-01,Tumour,,BH,0.118
+TCGA-BH-A42U-01,Tumour,BRCA_Normal,BH,0.309
+TCGA-EW-A1PG-01,Tumour,BRCA_Normal,EW,0.399
+TCGA-GM-A3XG-01,Tumour,,GM,0.419
+TCGA-PL-A8LY-01,Tumour,BRCA_Normal,PL,0.266
+TCGA-BH-A0BW-11,Normal,Normal tissue,BH,0.818
+TCGA-BH-A0DZ-11,Normal,Normal tissue,BH,0.525
+TCGA-BH-A1EW-11,Normal,Normal tissue,BH,0.548

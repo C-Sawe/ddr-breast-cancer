@@ -1,0 +1,159 @@
+gene,pathway,tcga_symbol
+UNG,Base excision repair,UNG
+SMUG1,Base excision repair,SMUG1
+MBD4,Base excision repair,MBD4
+TDG,Base excision repair,TDG
+OGG1,Base excision repair,OGG1
+MUTYH,Base excision repair,MUTYH
+NTHL1,Base excision repair,NTHL1
+MPG,Base excision repair,MPG
+NEIL1,Base excision repair,NEIL1
+NEIL2,Base excision repair,NEIL2
+NEIL3,Base excision repair,NEIL3
+APEX1,Base excision repair,APEX1
+APEX2,Base excision repair,APEX2
+LIG3,Base excision repair,LIG3
+XRCC1,Base excision repair,XRCC1
+PNKP,Base excision repair,PNKP
+APLF,Base excision repair,APLF
+POLB,Base excision repair,POLB
+PARP1,Base excision repair,PARP1
+PARP2,Base excision repair,PARP2
+PARP3,Base excision repair,PARP3
+FEN1,Base excision repair,FEN1
+LIG1,Base excision repair,LIG1
+TDP1,Base excision repair,TDP1
+TDP2,Base excision repair,TDP2
+MSH2,Mismatch repair,MSH2
+MSH3,Mismatch repair,MSH3
+MSH6,Mismatch repair,MSH6
+MLH1,Mismatch repair,MLH1
+PMS2,Mismatch repair,PMS2
+MLH3,Mismatch repair,MLH3
+PMS1,Mismatch repair,PMS1
+EXO1,Mismatch repair,EXO1
+PCNA,Mismatch repair,PCNA
+RFC1,Mismatch repair,RFC1
+RFC2,Mismatch repair,RFC2
+RFC3,Mismatch repair,RFC3
+RFC4,Mismatch repair,RFC4
+RFC5,Mismatch repair,RFC5
+POLD1,Mismatch repair,POLD1
+POLD3,Mismatch repair,POLD3
+XPC,Nucleotide excision repair,XPC
+RAD23A,Nucleotide excision repair,RAD23A
+RAD23B,Nucleotide excision repair,RAD23B
+CETN2,Nucleotide excision repair,CETN2
+XPA,Nucleotide excision repair,XPA
+DDB1,Nucleotide excision repair,DDB1
+DDB2,Nucleotide excision repair,DDB2
+RPA1,Nucleotide excision repair,RPA1
+RPA2,Nucleotide excision repair,RPA2
+RPA3,Nucleotide excision repair,RPA3
+ERCC1,Nucleotide excision repair,ERCC1
+ERCC2,Nucleotide excision repair,ERCC2
+ERCC3,Nucleotide excision repair,ERCC3
+ERCC4,Nucleotide excision repair,ERCC4
+ERCC5,Nucleotide excision repair,ERCC5
+ERCC6,Nucleotide excision repair,ERCC6
+ERCC8,Nucleotide excision repair,ERCC8
+GTF2H1,Nucleotide excision repair,GTF2H1
+GTF2H2,Nucleotide excision repair,GTF2H2
+GTF2H3,Nucleotide excision repair,GTF2H3
+GTF2H4,Nucleotide excision repair,GTF2H4
+GTF2H5,Nucleotide excision repair,GTF2H5
+CDK7,Nucleotide excision repair,CDK7
+CCNH,Nucleotide excision repair,CCNH
+MNAT1,Nucleotide excision repair,MNAT1
+UVSSA,Nucleotide excision repair,KIAA1530
+XAB2,Nucleotide excision repair,XAB2
+MMS19,Nucleotide excision repair,MMS19
+RAD51,Homologous recombination,RAD51
+RAD51B,Homologous recombination,RAD51L1
+RAD51C,Homologous recombination,RAD51C
+RAD51D,Homologous recombination,RAD51L3
+XRCC2,Homologous recombination,XRCC2
+XRCC3,Homologous recombination,XRCC3
+RAD52,Homologous recombination,RAD52
+RAD54L,Homologous recombination,RAD54L
+RAD54B,Homologous recombination,RAD54B
+BRCA1,Homologous recombination,BRCA1
+BARD1,Homologous recombination,BARD1
+BRCA2,Homologous recombination,BRCA2
+PALB2,Homologous recombination,PALB2
+RAD50,Homologous recombination,RAD50
+MRE11,Homologous recombination,MRE11A
+NBN,Homologous recombination,NBN
+RBBP8,Homologous recombination,RBBP8
+MUS81,Homologous recombination,MUS81
+EME1,Homologous recombination,EME1
+GEN1,Homologous recombination,GEN1
+SLX4,Homologous recombination,BTBD12
+BLM,Homologous recombination,BLM
+WRN,Homologous recombination,WRN
+RECQL,Homologous recombination,RECQL
+RECQL4,Homologous recombination,RECQL4
+RECQL5,Homologous recombination,RECQL5
+RMI1,Homologous recombination,RMI1
+RMI2,Homologous recombination,C16orf75
+TOP3A,Homologous recombination,TOP3A
+BRIP1,Homologous recombination,BRIP1
+RAD51AP1,Homologous recombination,RAD51AP1
+XRCC5,Non-homologous end joining,XRCC5
+XRCC6,Non-homologous end joining,XRCC6
+PRKDC,Non-homologous end joining,PRKDC
+LIG4,Non-homologous end joining,LIG4
+XRCC4,Non-homologous end joining,XRCC4
+DCLRE1C,Non-homologous end joining,DCLRE1C
+NHEJ1,Non-homologous end joining,NHEJ1
+POLM,Non-homologous end joining,POLM
+POLL,Non-homologous end joining,POLL
+FANCA,Fanconi anaemia pathway,FANCA
+FANCB,Fanconi anaemia pathway,FANCB
+FANCC,Fanconi anaemia pathway,FANCC
+FANCD2,Fanconi anaemia pathway,FANCD2
+FANCE,Fanconi anaemia pathway,FANCE
+FANCF,Fanconi anaemia pathway,FANCF
+FANCG,Fanconi anaemia pathway,FANCG
+FANCI,Fanconi anaemia pathway,FANCI
+FANCL,Fanconi anaemia pathway,FANCL
+FANCM,Fanconi anaemia pathway,FANCM
+UBE2T,Fanconi anaemia pathway,UBE2T
+FAAP24,Fanconi anaemia pathway,C19orf40
+FAAP100,Fanconi anaemia pathway,C17orf70
+USP1,Fanconi anaemia pathway,USP1
+WDR48,Fanconi anaemia pathway,WDR48
+REV1,Translesion synthesis,REV1
+REV3L,Translesion synthesis,REV3L
+MAD2L2,Translesion synthesis,MAD2L2
+POLH,Translesion synthesis,POLH
+POLI,Translesion synthesis,POLI
+POLK,Translesion synthesis,POLK
+POLQ,Translesion synthesis,POLQ
+POLN,Translesion synthesis,POLN
+RAD18,Translesion synthesis,RAD18
+UBE2A,Translesion synthesis,UBE2A
+UBE2B,Translesion synthesis,UBE2B
+HLTF,Translesion synthesis,HLTF
+SHPRH,Translesion synthesis,SHPRH
+MGMT,Direct reversal,MGMT
+ALKBH2,Direct reversal,ALKBH2
+ALKBH3,Direct reversal,ALKBH3
+ATM,DDR signalling & checkpoints,ATM
+ATR,DDR signalling & checkpoints,ATR
+ATRIP,DDR signalling & checkpoints,ATRIP
+CHEK1,DDR signalling & checkpoints,CHEK1
+CHEK2,DDR signalling & checkpoints,CHEK2
+TP53BP1,DDR signalling & checkpoints,TP53BP1
+MDC1,DDR signalling & checkpoints,MDC1
+H2AX,DDR signalling & checkpoints,H2AFX
+RNF8,DDR signalling & checkpoints,RNF8
+RNF168,DDR signalling & checkpoints,RNF168
+TOPBP1,DDR signalling & checkpoints,TOPBP1
+RAD9A,DDR signalling & checkpoints,RAD9A
+HUS1,DDR signalling & checkpoints,HUS1
+RAD1,DDR signalling & checkpoints,RAD1
+RAD17,DDR signalling & checkpoints,RAD17
+CLSPN,DDR signalling & checkpoints,CLSPN
+TP53,DDR signalling & checkpoints,TP53
+RIF1,DDR signalling & checkpoints,RIF1

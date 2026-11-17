@@ -1,0 +1,8 @@
+,ROC-AUC,PR-AUC (normal),Balanced acc.,Sensitivity,Specificity,MCC
+Baseline: majority class,0.5,0.0953,0.5,1.0,0.0,0.0
+Baseline: stratified random,0.4803,0.0934,0.4803,0.9168,0.0439,-0.0427
+Baseline: MKI67 only,0.9478,0.6932,0.8944,0.894,0.8947,0.6014
+Logistic regression (L2),0.9981,0.977,0.9827,0.9858,0.9795,0.9202
+Logistic regression (L1),0.9963,0.9645,0.9674,0.9553,0.9795,0.8065
+Random forest,0.9953,0.9599,0.9278,0.996,0.8596,0.8983
+SVM (RBF),0.9974,0.9646,0.9696,0.9948,0.9444,0.9417

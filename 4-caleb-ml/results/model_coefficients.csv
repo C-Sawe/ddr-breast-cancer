@@ -1,0 +1,159 @@
+gene,pathway,coefficient
+POLH,Translesion synthesis,0.393
+FANCF,Fanconi anaemia pathway,0.3866
+RBBP8,Homologous recombination,-0.3807
+RMI1,Homologous recombination,0.3662
+APLF,Base excision repair,-0.3553
+POLM,Non-homologous end joining,0.3482
+RPA1,Nucleotide excision repair,-0.3198
+FAAP100,Fanconi anaemia pathway,0.3166
+NHEJ1,Non-homologous end joining,-0.3015
+RMI2,Homologous recombination,0.2827
+LIG3,Base excision repair,0.2813
+REV1,Translesion synthesis,-0.2691
+PALB2,Homologous recombination,0.2658
+PARP1,Base excision repair,0.2607
+CDK7,Nucleotide excision repair,0.249
+POLB,Base excision repair,0.2464
+ATRIP,DDR signalling & checkpoints,0.2451
+RAD1,DDR signalling & checkpoints,0.2425
+FANCE,Fanconi anaemia pathway,-0.2304
+XPA,Nucleotide excision repair,-0.2256
+HLTF,Translesion synthesis,0.225
+NEIL2,Base excision repair,-0.2245
+PARP2,Base excision repair,-0.2195
+REV3L,Translesion synthesis,-0.2125
+H2AX,DDR signalling & checkpoints,0.2116
+ALKBH2,Direct reversal,-0.2063
+MPG,Base excision repair,0.2044
+NEIL1,Base excision repair,-0.2043
+GTF2H5,Nucleotide excision repair,-0.2039
+WRN,Homologous recombination,-0.1975
+RPA3,Nucleotide excision repair,0.1935
+FANCI,Fanconi anaemia pathway,0.193
+NBN,Homologous recombination,0.1929
+CETN2,Nucleotide excision repair,0.1878
+FAAP24,Fanconi anaemia pathway,0.1857
+RAD51B,Homologous recombination,-0.1843
+RECQL4,Homologous recombination,0.1835
+SHPRH,Translesion synthesis,-0.1827
+OGG1,Base excision repair,-0.1808
+XRCC6,Non-homologous end joining,-0.1768
+RFC1,Mismatch repair,-0.1744
+PARP3,Base excision repair,-0.1699
+PNKP,Base excision repair,0.1686
+UBE2T,Fanconi anaemia pathway,0.1653
+APEX1,Base excision repair,-0.1639
+ERCC8,Nucleotide excision repair,-0.1611
+XRCC2,Homologous recombination,0.1602
+PMS2,Mismatch repair,0.1596
+ERCC1,Nucleotide excision repair,0.1576
+FANCM,Fanconi anaemia pathway,-0.1567
+UBE2A,Translesion synthesis,0.1559
+MAD2L2,Translesion synthesis,0.1526
+CHEK2,DDR signalling & checkpoints,-0.1519
+XRCC1,Base excision repair,0.1517
+MUS81,Homologous recombination,0.1501
+BRCA1,Homologous recombination,-0.1491
+RAD51AP1,Homologous recombination,0.149
+XPC,Nucleotide excision repair,-0.1459
+ERCC5,Nucleotide excision repair,-0.1442
+TOPBP1,DDR signalling & checkpoints,0.1438
+TP53BP1,DDR signalling & checkpoints,0.1437
+FANCC,Fanconi anaemia pathway,-0.1419
+RAD54B,Homologous recombination,0.1362
+EME1,Homologous recombination,-0.1359
+TP53,DDR signalling & checkpoints,-0.1328
+PCNA,Mismatch repair,0.1324
+NEIL3,Base excision repair,0.1306
+DDB2,Nucleotide excision repair,-0.1263
+MBD4,Base excision repair,0.1261
+WDR48,Fanconi anaemia pathway,-0.12
+EXO1,Mismatch repair,0.1197
+MGMT,Direct reversal,-0.1186
+RAD52,Homologous recombination,-0.1185
+RAD51D,Homologous recombination,-0.118
+FANCB,Fanconi anaemia pathway,-0.118
+RECQL,Homologous recombination,0.1164
+APEX2,Base excision repair,0.1151
+BRCA2,Homologous recombination,0.1137
+POLL,Non-homologous end joining,-0.1133
+ERCC6,Nucleotide excision repair,0.113
+FANCA,Fanconi anaemia pathway,-0.1117
+RNF168,DDR signalling & checkpoints,-0.1102
+RNF8,DDR signalling & checkpoints,0.109
+MRE11,Homologous recombination,-0.1062
+PMS1,Mismatch repair,-0.1033
+MNAT1,Nucleotide excision repair,-0.1004
+RAD17,DDR signalling & checkpoints,-0.1
+RFC2,Mismatch repair,0.0973
+FEN1,Base excision repair,-0.093
+HUS1,DDR signalling & checkpoints,0.0918
+ATR,DDR signalling & checkpoints,-0.0911
+ALKBH3,Direct reversal,-0.088
+GTF2H1,Nucleotide excision repair,-0.0849
+ATM,DDR signalling & checkpoints,-0.0843
+RAD23A,Nucleotide excision repair,0.0838
+SLX4,Homologous recombination,0.0836
+POLK,Translesion synthesis,0.0797
+POLD3,Mismatch repair,0.0793
+MMS19,Nucleotide excision repair,-0.0765
+GTF2H4,Nucleotide excision repair,-0.0745
+ERCC3,Nucleotide excision repair,-0.0738
+MSH2,Mismatch repair,-0.0639
+RAD23B,Nucleotide excision repair,0.0636
+RPA2,Nucleotide excision repair,-0.062
+UNG,Base excision repair,-0.0615
+GEN1,Homologous recombination,0.0603
+RAD18,Translesion synthesis,-0.0603
+MSH3,Mismatch repair,0.0593
+UVSSA,Nucleotide excision repair,-0.058
+XRCC5,Non-homologous end joining,0.0493
+SMUG1,Base excision repair,-0.0491
+UBE2B,Translesion synthesis,0.0487
+RAD51,Homologous recombination,0.0481
+GTF2H3,Nucleotide excision repair,-0.0471
+CLSPN,DDR signalling & checkpoints,0.0469
+LIG1,Base excision repair,-0.0452
+FANCL,Fanconi anaemia pathway,0.0443
+USP1,Fanconi anaemia pathway,0.0434
+BLM,Homologous recombination,0.0408
+CHEK1,DDR signalling & checkpoints,-0.0407
+RFC3,Mismatch repair,0.0398
+TOP3A,Homologous recombination,0.0396
+RAD50,Homologous recombination,-0.0388
+TDG,Base excision repair,-0.036
+PRKDC,Non-homologous end joining,0.0355
+POLI,Translesion synthesis,-0.0346
+CCNH,Nucleotide excision repair,-0.0346
+RFC4,Mismatch repair,0.032
+BRIP1,Homologous recombination,-0.03
+RFC5,Mismatch repair,-0.0293
+XAB2,Nucleotide excision repair,0.0288
+MLH3,Mismatch repair,-0.0277
+GTF2H2,Nucleotide excision repair,0.0273
+NTHL1,Base excision repair,0.0271
+RECQL5,Homologous recombination,0.0265
+BARD1,Homologous recombination,0.0258
+FANCD2,Fanconi anaemia pathway,0.0255
+MLH1,Mismatch repair,0.0253
+XRCC3,Homologous recombination,-0.0249
+MUTYH,Base excision repair,0.0247
+RAD9A,DDR signalling & checkpoints,0.0232
+TDP1,Base excision repair,-0.0227
+XRCC4,Non-homologous end joining,0.0201
+RAD54L,Homologous recombination,-0.0192
+POLQ,Translesion synthesis,0.0166
+TDP2,Base excision repair,-0.0159
+LIG4,Non-homologous end joining,0.013
+ERCC4,Nucleotide excision repair,0.012
+FANCG,Fanconi anaemia pathway,0.0099
+MDC1,DDR signalling & checkpoints,0.0085
+ERCC2,Nucleotide excision repair,0.0081
+RAD51C,Homologous recombination,0.0069
+MSH6,Mismatch repair,0.0068
+RIF1,DDR signalling & checkpoints,-0.0061
+POLD1,Mismatch repair,0.0048
+DCLRE1C,Non-homologous end joining,0.0028
+POLN,Translesion synthesis,0.0008
+DDB1,Nucleotide excision repair,-0.0001

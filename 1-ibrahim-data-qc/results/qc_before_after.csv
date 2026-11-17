@@ -1,0 +1,8 @@
+step,genes,samples,note
+Raw tumour matrix,20531,1082,
+Raw normal matrix,20531,114,
+Drop rows without a gene symbol,20518,1082,13 unnamed rows removed
+Merge duplicate symbols (keep highest mean),20511,1082,7 duplicates removed
+Genes common to both matrices; join,20454,1196,0 missing and 0 negative values set to 0
+Remove low-expressed genes (log2 > 1 in < 20% of samples),17640,1196,2814 genes removed
+Duplicate sample barcodes,17640,1196,0 duplicates

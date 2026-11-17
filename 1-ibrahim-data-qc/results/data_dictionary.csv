@@ -1,0 +1,10 @@
+File,Variable,Description
+data_mrna_seq_v2_rsem.txt,Hugo_Symbol,HGNC gene symbol (row identifier)
+data_mrna_seq_v2_rsem.txt,Entrez_Gene_Id,NCBI Entrez gene ID
+data_mrna_seq_v2_rsem.txt,TCGA-XX-XXXX-01,One column per primary tumour: RSEM-normalised RNA-seq expression (upper-quartile normalised count)
+data_mrna_seq_v2_rsem_normal_samples.txt,TCGA-XX-XXXX-11,"One column per solid-tissue normal sample (barcode suffix -11), same units"
+data_clinical_patient.txt,PATIENT_ID,"12-character TCGA patient barcode, links samples to patients"
+data_clinical_patient.txt,SUBTYPE,"PAM50 molecular subtype (LumA, LumB, Her2, Basal, Normal-like)"
+data_clinical_patient.txt,"AGE, SEX, AJCC_PATHOLOGIC_TUMOR_STAGE ...",Clinical covariates (context only)
+data_clinical_sample.txt,SAMPLE_ID / SAMPLE_TYPE,Sample barcode and type (Primary / Metastasis)
+data_clinical_sample.txt,TISSUE_SOURCE_SITE,"Hospital that collected the sample (barcode field 2), used to check batch effects"

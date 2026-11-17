@@ -1,0 +1,4 @@
+,ROC-AUC,PR-AUC (normal),Balanced acc.,Sensitivity,Specificity,MCC
+Main CV (patient-grouped),0.9981,0.977,0.9827,0.9858,0.9795,0.9202
+Matched pairs only (228 samples),0.9996,0.9996,0.9898,0.9912,0.9883,0.9795
+Leave-hospital-out,0.9975,0.9671,0.9804,0.9871,0.9737,0.9222

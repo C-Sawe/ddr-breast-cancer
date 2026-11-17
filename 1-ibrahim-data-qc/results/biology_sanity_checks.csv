@@ -1,0 +1,5 @@
+gene,median_normal,median_tumour,expected,holds
+ADIPOQ (adipocyte),13.66,7.15,higher in normal,True
+PLIN1 (adipocyte),13.42,6.96,higher in normal,True
+MKI67 (proliferation),7.46,10.73,higher in tumour,True
+TOP2A (proliferation),7.44,11.21,higher in tumour,True
