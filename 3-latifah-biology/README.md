@@ -10,7 +10,7 @@
 ## Key results
 - Fanconi anaemia, HR, BER and MMR scores rise (FDR < 0.001); NER and NHEJ do not. HR is significantly enriched among risers (OR 4.1, FDR 0.02).
 - DDR genes are **2.5×** more likely to be strongly up-regulated than other genes (p = 1.7e-4).
-- A 22-gene module holds most risers (82%), with hubs EXO1, BLM, POLQ, RAD51AP1, NEIL3 and RAD54L.
+- A 22-gene module holds most risers (82%), with hubs EXO1, BLM, POLQ, NEIL3, RAD51AP1 and FANCI.
 - Risers track proliferation (median ρ 0.72 vs 0.12 for other DDR genes), consistent with replication stress in dividing tumour cells.
 
 ## Files

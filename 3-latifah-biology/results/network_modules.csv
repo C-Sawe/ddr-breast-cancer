@@ -1,5 +1,5 @@
 module,size,pct_up_2fold,top_pathways,hub_genes
-1,25,16.0,"Homologous recombination, DDR signalling & checkpoints, Nucleotide excision repair","CLSPN, FANCB, XRCC2, TOPBP1, BRIP1, MSH2"
-2,22,81.8,"Homologous recombination, Mismatch repair, Fanconi anaemia pathway","EXO1, POLQ, BLM, NEIL3, RAD51AP1, RAD51"
-3,6,50.0,"Homologous recombination, Nucleotide excision repair, Mismatch repair","POLD1, RECQL4, H2AX, GTF2H4, XRCC3, LIG1"
+1,25,16.0,"DDR signalling & checkpoints, Homologous recombination, Nucleotide excision repair","CLSPN, FANCB, TOPBP1, XRCC2, BRIP1, MSH2"
+2,22,81.8,"Homologous recombination, Mismatch repair, Fanconi anaemia pathway","BLM, EXO1, POLQ, NEIL3, RAD51AP1, FANCI"
+3,6,50.0,"Homologous recombination, Base excision repair, DDR signalling & checkpoints","POLD1, RECQL4, H2AX, GTF2H4, LIG1, XRCC3"
 4,5,20.0,"Base excision repair, Direct reversal, Nucleotide excision repair","MPG, PNKP, XAB2, MGMT, NTHL1"

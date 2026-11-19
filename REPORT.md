@@ -97,7 +97,7 @@ The largest increases are EXO1 (11.9×), NEIL3 (10.5×), UBE2T (8.7×), RAD54L (
 - **Pathway scores** rise in Fanconi anaemia, HR, BER and MMR (all FDR < 0.001). NER, NHEJ and direct reversal show no clear change, and translesion synthesis falls slightly.
 - **HR is significantly enriched** among ≥2-fold risers (12/31 genes, OR 4.1, FDR 0.02).
 - **Genome-wide,** DDR genes are 2.5× more likely to be strongly up-regulated than other genes (17.4% vs 7.9%, p = 1.7 × 10⁻⁴).
-- **Network:** one 22-gene module contains most risers (82% up ≥2-fold), with hubs EXO1, BLM, POLQ, RAD51AP1, NEIL3 and RAD54L. The genes are co-regulated as one programme.
+- **Network:** one 22-gene module contains most risers (82% up ≥2-fold), with hubs EXO1, BLM, POLQ, NEIL3, RAD51AP1 and FANCI. The genes are co-regulated as one programme.
 - **Proliferation:** within tumours, the risers correlate strongly with proliferation (median ρ = 0.72), while other DDR genes do not (ρ = 0.12).
 
 Tumour cells divide fast and face replication stress, so they switch on the repair systems that work during DNA replication. This matches reports of HR/FA over-expression in proliferative and basal-like breast cancer, and of POLQ as a breast-cancer drug target.
