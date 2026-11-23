@@ -20,4 +20,4 @@
 Robust to matched pairs (0.9996) and held-out hospitals (0.997). **Negative finding:** random genes do as well, so the signal is not repair-specific.
 
 ## Files
-`results/model_comparison.csv`, `robustness.csv`, `random_geneset_baseline.csv`, `panel_size_curve.csv`, `model_coefficients.csv`, `misclassified.csv`, `figures/ml_1_roc.png`, `ml_2_random_baseline.png`, `ml_3_panel_size.png`.
+`results/model_comparison.csv`, `robustness.csv`, `random_geneset_baseline.csv`, `panel_size_curve.csv`, `model_coefficients.csv`, `misclassified.csv`, `figures/ml_1_roc.png`, `ml_4_confusion_matrix.png`, `ml_2_random_baseline.png`, `ml_3_panel_size.png`.
