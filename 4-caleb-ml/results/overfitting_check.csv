@@ -1,0 +1,5 @@
+model,train_bal_acc,cv_bal_acc,cv_bal_acc_std,gap_bal_acc,train_auc,cv_auc,cv_auc_std
+Logistic regression (L2),0.9949,0.9827,0.0056,0.0122,0.9991,0.9981,0.0001
+Logistic regression (L1),0.9829,0.9674,0.0027,0.0155,0.9976,0.9963,0.0001
+Random forest,0.9982,0.9278,0.0046,0.0703,0.9999,0.9953,0.0003
+SVM (RBF),0.9977,0.9696,0.0053,0.0281,0.9987,0.9974,0.0001
